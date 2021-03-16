@@ -1,0 +1,30 @@
+
+<html>
+    <head>
+    </head>
+    <body>
+      <!-- 嵌入iframe，并且在页面隐藏 -->
+      <iframe id="newframe" 
+        src="http://127.0.0.1:4000" 
+        name="postframe"
+        style="position: absolute; left: -9999px; top: 0; width: 0; height: 0;" >
+    </iframe>
+      <div id="app">
+      </div>  
+      <script>
+        let first = true;
+        let frame = document.getElementById('newframe');
+        frame.addEventListener('load', () => {
+            // 第一次加载iframe
+            if(first){
+                frame.src = "http://127.0.0.1:3000/empty";
+                first = false
+            } else {
+                // 第二次加载iframe；
+                let user = frame.contentWindow.name;
+                document.getElementById('app').innerText = user;
+            }
+        })
+     </script>
+    </body>
+    </html>

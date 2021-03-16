@@ -1,0 +1,17 @@
+
+<html>
+    <head>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <script>
+            axios.defaults.baseURL = 'http://127.0.0.1:4000';
+            axios.defaults.withCredentials = true;
+            axios.get('/users/get').then((result) => {
+                let iframe = document.createElement("iframe");
+	            iframe.src = 'http://127.0.0.1:3000/empty#'+result.data.username;
+	            document.body.appendChild(iframe);
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+
+<html>
+  <head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        {{user.username}}
+      </div>
+    </div>  
+    <script>
+      axios.defaults.baseURL = 'http://localhost:4000';
+      axios.defaults.withCredentials = true;
+      var app = new Vue({
+        el: '#app',
+        data() {
+          return  {
+            user: {}
+          }
+        },
+        created() {
+          this.getUser();
+        },
+        methods: {
+          async getUser() {
+            let result = await axios.get('/users/get', {
+              // headers: { // 触发了预检请求
+              //   'X-Token': 'jilei'
+              // }
+            });
+            console.log("result",result);
+            this.user = result.data;
+          }   
+        }  
+      });
+   </script>
+  </body>
+  </html>

@@ -1,0 +1,15 @@
+
+<html>
+    <head>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <script>
+            axios.defaults.baseURL = 'http://127.0.0.1:4000';
+            axios.defaults.withCredentials = true;
+            axios.get('/users/get').then((result) => {
+                window.name = JSON.stringify(result.data);
+            });
+        </script>
+    </body>
+</html>
