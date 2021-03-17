@@ -1,0 +1,11 @@
+
+<html>
+    <body>
+        <script>
+            window.addEventListener('message', (event) => {
+                // 向parent发送信息
+                event.source.postMessage(`${event.data}, Candice`, 'http://127.0.0.1:3000');
+            })
+        </script>
+    </body>
+</html>

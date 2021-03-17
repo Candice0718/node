@@ -1,0 +1,26 @@
+
+<html>
+    <head>
+    </head>
+    <body>
+      <!-- 嵌入iframe，并且在页面隐藏 -->
+      <iframe id="newframe" 
+        src="http://127.0.0.1:4000" 
+        name="postframe"
+        style="position: absolute; left: -9999px; top: 0; width: 0; height: 0;" >
+      </iframe>
+      <div id="app">
+      </div>  
+      <script>
+        let frame = document.getElementById('newframe');
+        frame.addEventListener('load', () => {
+            // 通过frame与b.html进行通信
+            frame.contentWindow.postMessage('hello', 'http://127.0.0.1:4000');
+        })
+        // 监听发送的信息
+        window.addEventListener('message', (event) => {
+          document.getElementById('app').innerText = event.data;
+        })
+     </script>
+    </body>
+    </html>
