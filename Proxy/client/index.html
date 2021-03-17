@@ -1,0 +1,17 @@
+
+<html>
+    <head>
+    </head>
+    <body>
+      <div id="app">
+      </div>  
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+     <script>
+        axios.defaults.baseURL = 'http://127.0.0.1:3000';
+        axios.defaults.withCredentials = true;
+        axios.get('/users/get').then((result) => {
+            document.getElementById('app').innerText = result.data.username;
+        });
+    </script>
+    </body>
+    </html>
