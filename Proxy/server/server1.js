@@ -12,7 +12,7 @@ const server = http.createServer((request, response) => {
                 response.end('服务器内部出现问题');
                 return;
             } else { 
-                response.writeHead(200, { 'Content-Type': 'text/html' });
+                response.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
                 response.end(data);
                 return;
             }
